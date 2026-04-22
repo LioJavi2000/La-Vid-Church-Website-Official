@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ver | La Vid Church</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { 'forest': '#0e0621', 'forest-md': '#160b2c', 'sage': '#c8a84b', 'sage-lt': '#e8ca7e', 'cream': '#f2e8d5', 'gold': '#c8a84b' },
+          fontFamily: { serif: ['"DM Serif Text"', 'Georgia', 'serif'], sans: ['"Source Sans 3"', 'sans-serif'] },
+          maxWidth: { content: '1042px' },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { font-family: 'Source Sans 3', sans-serif; }
+    html { scroll-behavior: smooth; }
+    [id] { scroll-margin-top: 0; }
+    .hero-bg { background: linear-gradient(170deg, #07030f 0%, #0e0621 18%, #160b2c 35%, #0a041a 55%, #07030f 75%, #050210 100%); }
+    .hero-bg::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 30%, rgba(90,40,160,0.5) 0%, transparent 65%); }
+    .section-rule::after { content: ''; display: block; width: 44px; height: 2px; background: #c8a84b; margin: 12px auto 0; }
+    .drop-arrow { transition: transform 0.2s ease; display: inline-block; }
+    .nav-btn.active .drop-arrow { transform: rotate(180deg); }
+    .mob-arrow { transition: transform 0.2s ease; display: inline-block; }
+    .mob-arrow.open { transform: rotate(180deg); }
+    .play-btn { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .play-btn:hover { transform: scale(1.08); box-shadow: 0 0 40px rgba(200,168,75,0.35); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fade-up { animation: fadeUp 0.6s ease forwards; }
+    .delay-100 { animation-delay: 0.1s; opacity: 0; animation-fill-mode: forwards; }
+    @keyframes pulse-live { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .live-dot { animation: pulse-live 1.5s ease infinite; }
+  </style>
+</head>
+<body class="text-[#141414] bg-white overflow-x-hidden">
+
+<!-- HEADER -->
+<header id="siteHeader" class="w-full" style="position:absolute; top:0; left:0; right:0; z-index:50; background:transparent;">
+  <div class="max-w-content mx-auto px-6 flex items-center justify-between h-[84px]">
+    <a href="lvcw.html" class="flex items-center gap-3 no-underline">
+      <img src="brand_assets/logo.jpg" alt="La Vid Church" class="w-[74px] h-[74px] rounded-full flex-shrink-0" style="mix-blend-mode:screen; margin-top:4px; margin-left:5px;" />
+      <div class="flex flex-col leading-tight">
+        <span class="font-sans text-[10px] font-bold tracking-[0.18em] uppercase text-white/50">Santa Ana, CA</span>
+        <span class="font-serif text-[15px] text-white tracking-[0.02em]">La Vid Church</span>
+      </div>
+    </a>
+    <nav class="hidden md:flex items-center gap-0.5">
+      <div class="nav-item relative"><button id="nav-welcome" class="nav-btn text-white font-sans text-[17px] font-medium tracking-[0.05em] uppercase px-[13px] py-[7px] rounded-sm hover:bg-white/10 flex items-center gap-1.5" data-drop="drop-welcome">Bienvenida <svg class="drop-arrow w-3 h-3 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div id="drop-welcome" class="dropdown hidden absolute top-[calc(100%+4px)] left-0 min-w-[170px] bg-[#2a1060] z-[100] rounded-sm shadow-xl py-1.5 border border-white/10">
+          <a href="lvcw.html" class="block px-4 py-2.5 font-sans text-[13px] text-white/85 hover:text-white hover:bg-white/10 transition-colors">Inicio</a>
+          <a href="welcome.html#new-here" class="block px-4 py-2.5 font-sans text-[13px] text-white/85 hover:text-white hover:bg-white/10 transition-colors">¿Nuevo Aquí?</a>
+          <a href="connect.html#visit" class="block px-4 py-2.5 font-sans text-[13px] text-white/85 hover:text-white hover:bg-white/10 transition-colors">Visítanos</a>
+        </div>
+      </div>
+      <div class="nav-item relative"><button id="nav-church" class="nav-btn text-white font-sans text-[17px] font-medium tracking-[0.05em] uppercase px-[13px] py-[7px] rounded-sm hover:bg-white/10 flex items-center gap-1.5" data-drop="drop-church">Nuestra Iglesia <svg class="drop-arrow w-3 h-3 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div id="drop-church" class="dropdown hidden absolute top-[calc(100%+4px)] left-0 min-w-[190px] bg-[#2a1060] z-[100] rounded-sm shadow-xl py-1.5 border border-white/10">
+          <a href="our-church.html#leadership" class="block px-4 py-2.5 font-sans text-[13px] text-white/85 hover:text-white hover:bg-white/10 transition-colors">Liderazgo</a>
+          <a href="our-church.html#beliefs" class="block px-4 py-2.5 font-sans text-[13px] text-white/85 hover:text-white hover:bg-white/10 transition-colors">Nuestras Creencias</a>
+          <a href="our-church.html#history" class="block px-4 py-2.5 font-sans text-[13px] text-white/85 hover:text-white hover:bg-white/10 transition-colors">Historia</a>
+        </div>
+      </div>
+      <div class="nav-item relative"><button id="nav-community" class="nav-btn text-white font-sans text-[17px] font-medium tracking-[0.05em] uppercase px-[13px] py-[7px] rounded-sm hover:bg-white/10 flex items-center gap-1.5" data-drop="drop-community">Comunidad <svg class="drop-arrow w-3 h-3 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div id="drop-community" class="dropdown hidden absolute top-[calc(100%+4px)] left-0 min-w-[170px] bg-[#2a1060] z-[100] rounded-sm shadow-xl py-1.5 border border-white/10">
+          <a href="community.html#groups" class="block px-4 py-2.5 font-sans text-[13px] text-white/85 hover:text-white hover:bg-white/10 transition-colors">Grupos de Vida</a>
+          <a href="community.html#events" class="block px-4 py-2.5 font-sans text-[13px] text-white/85 hover:text-white hover:bg-white/10 transition-colors">Eventos</a>
+          <a href="community.html#serve" class="block px-4 py-2.5 font-sans text-[13px] text-white/85 hover:text-white hover:bg-white/10 transition-colors">Servir</a>
+        </div>
+      </div>
+      <div class="nav-item relative"><button id="nav-watch" class="nav-btn text-white font-sans text-[17px] font-medium tracking-[0.05em] uppercase px-[13px] py-[7px] rounded-sm hover:bg-white/10 flex items-center gap-1.5" data-drop="drop-watch">Ver <svg class="drop-arrow w-3 h-3 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div id="drop-watch" class="dropdown hidden absolute top-[calc(100%+4px)] left-0 min-w-[170px] bg-[#2a1060] z-[100] rounded-sm shadow-xl py-1.5 border border-white/10">
+          <a href="watch.html#sermons" class="block px-4 py-2.5 font-sans text-[13px] text-white/85 hover:text-white hover:bg-white/10 transition-colors">Sermones</a>
+          <a href="watch.html#live" class="block px-4 py-2.5 font-sans text-[13px] text-white/85 hover:text-white hover:bg-white/10 transition-colors">En Vivo</a>
+        </div>
+      </div>
+      <div class="nav-item relative"><button id="nav-connect" class="nav-btn text-white font-sans text-[17px] font-medium tracking-[0.05em] uppercase px-[13px] py-[7px] rounded-sm hover:bg-white/10 border border-white/40 ml-2 flex items-center gap-1.5" data-drop="drop-connect">Conectar <svg class="drop-arrow w-3 h-3 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div id="drop-connect" class="dropdown hidden absolute top-[calc(100%+4px)] right-0 min-w-[190px] bg-[#2a1060] z-[100] rounded-sm shadow-xl py-1.5 border border-white/10">
+          <a href="connect.html#contact" class="block px-4 py-2.5 font-sans text-[13px] text-white/85 hover:text-white hover:bg-white/10 transition-colors">Contáctanos</a>
+          <a href="connect.html#prayer" class="block px-4 py-2.5 font-sans text-[13px] text-white/85 hover:text-white hover:bg-white/10 transition-colors">Petición de Oración</a>
+          <a href="connect.html#give" class="block px-4 py-2.5 font-sans text-[13px] text-white/85 hover:text-white hover:bg-white/10 transition-colors">Dar</a>
+        </div>
+      </div>
+      <button id="searchToggle" class="ml-2 flex items-center justify-center w-9 h-9 rounded-sm hover:bg-white/10 transition-colors" aria-label="Buscar">
+        <svg class="w-[18px] h-[18px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+    </nav>
+    <button id="menuToggle" class="md:hidden flex flex-col gap-[5px] bg-transparent border-none cursor-pointer p-1.5">
+      <span class="block w-[22px] h-[2px] bg-white rounded-sm"></span>
+      <span class="block w-[22px] h-[2px] bg-white rounded-sm"></span>
+      <span class="block w-[22px] h-[2px] bg-white rounded-sm"></span>
+    </button>
+  </div>
+  <nav id="mobileNav" class="hidden flex-col border-t border-white/10" style="background:rgba(14,6,33,0.97);">
+    <div class="border-b border-white/8"><button class="mobile-nav-btn w-full text-left text-white font-sans text-[15px] font-medium px-6 py-3 flex items-center justify-between hover:bg-[#2a1060]" data-mobile-drop="mob-welcome">Bienvenida <svg class="mob-arrow w-4 h-4 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button><div id="mob-welcome" class="hidden"><a href="lvcw.html" class="block px-10 py-2.5 font-sans text-[14px] text-white/75 hover:text-white hover:bg-[#2a1060]">Inicio</a><a href="welcome.html#new-here" class="block px-10 py-2.5 font-sans text-[14px] text-white/75 hover:text-white hover:bg-[#2a1060]">¿Nuevo Aquí?</a><a href="connect.html#visit" class="block px-10 py-2.5 font-sans text-[14px] text-white/75 hover:text-white hover:bg-[#2a1060]">Visítanos</a></div></div>
+    <div class="border-b border-white/8"><button class="mobile-nav-btn w-full text-left text-white font-sans text-[15px] font-medium px-6 py-3 flex items-center justify-between hover:bg-[#2a1060]" data-mobile-drop="mob-church">Nuestra Iglesia <svg class="mob-arrow w-4 h-4 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button><div id="mob-church" class="hidden"><a href="our-church.html#leadership" class="block px-10 py-2.5 font-sans text-[14px] text-white/75 hover:text-white hover:bg-[#2a1060]">Liderazgo</a><a href="our-church.html#beliefs" class="block px-10 py-2.5 font-sans text-[14px] text-white/75 hover:text-white hover:bg-[#2a1060]">Nuestras Creencias</a><a href="our-church.html#history" class="block px-10 py-2.5 font-sans text-[14px] text-white/75 hover:text-white hover:bg-[#2a1060]">Historia</a></div></div>
+    <div class="border-b border-white/8"><button class="mobile-nav-btn w-full text-left text-white font-sans text-[15px] font-medium px-6 py-3 flex items-center justify-between hover:bg-[#2a1060]" data-mobile-drop="mob-community">Comunidad <svg class="mob-arrow w-4 h-4 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button><div id="mob-community" class="hidden"><a href="community.html#groups" class="block px-10 py-2.5 font-sans text-[14px] text-white/75 hover:text-white hover:bg-[#2a1060]">Grupos de Vida</a><a href="community.html#events" class="block px-10 py-2.5 font-sans text-[14px] text-white/75 hover:text-white hover:bg-[#2a1060]">Eventos</a><a href="community.html#serve" class="block px-10 py-2.5 font-sans text-[14px] text-white/75 hover:text-white hover:bg-[#2a1060]">Servir</a></div></div>
+    <div class="border-b border-white/8"><button class="mobile-nav-btn w-full text-left text-white font-sans text-[15px] font-medium px-6 py-3 flex items-center justify-between hover:bg-[#2a1060]" data-mobile-drop="mob-watch">Ver <svg class="mob-arrow w-4 h-4 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button><div id="mob-watch" class="hidden"><a href="watch.html#sermons" class="block px-10 py-2.5 font-sans text-[14px] text-white/75 hover:text-white hover:bg-[#2a1060]">Sermones</a><a href="watch.html#live" class="block px-10 py-2.5 font-sans text-[14px] text-white/75 hover:text-white hover:bg-[#2a1060]">En Vivo</a></div></div>
+    <div><button class="mobile-nav-btn w-full text-left text-white font-sans text-[15px] font-medium px-6 py-3 flex items-center justify-between hover:bg-[#2a1060]" data-mobile-drop="mob-connect">Conectar <svg class="mob-arrow w-4 h-4 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button><div id="mob-connect" class="hidden"><a href="connect.html#contact" class="block px-10 py-2.5 font-sans text-[14px] text-white/75 hover:text-white hover:bg-[#2a1060]">Contáctanos</a><a href="connect.html#prayer" class="block px-10 py-2.5 font-sans text-[14px] text-white/75 hover:text-white hover:bg-[#2a1060]">Petición de Oración</a><a href="connect.html#give" class="block px-10 py-2.5 font-sans text-[14px] text-white/75 hover:text-white hover:bg-[#2a1060]">Dar</a></div></div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="relative h-[520px] flex items-end overflow-hidden">
+  <div class="hero-bg absolute inset-0"></div>
+  <div class="absolute inset-0" style="background:rgba(10,4,28,0.45);"></div>
+  <div class="relative z-10 max-w-content mx-auto w-full px-7 pb-[70px]">
+    <p class="font-sans text-[11px] font-bold tracking-[0.22em] uppercase text-sage mb-4 animate-fade-up">Ver y Escuchar</p>
+    <h1 class="font-serif text-[clamp(32px,5vw,58px)] text-white leading-[1.15] max-w-[600px] mb-6 font-normal animate-fade-up">Mensajes que Te Mueven</h1>
+    <p class="font-sans text-[16px] text-white/70 max-w-[480px] leading-[1.7] animate-fade-up delay-100">Mira sermones anteriores, conéctate en vivo cada domingo o suscríbete a nuestro podcast. La Palabra siempre está disponible.</p>
+  </div>
+</section>
+
+<!-- LATEST SERMON -->
+<section id="sermons" class="bg-white py-[84px]">
+  <div class="max-w-content mx-auto px-7">
+    <div class="text-center mb-12">
+      <p class="font-sans text-[10.5px] font-bold tracking-[0.22em] uppercase text-sage mb-3">Destacado</p>
+      <h2 class="font-serif text-[clamp(26px,3.5vw,40px)] text-[#1a1a1a] font-normal leading-[1.2] mb-4">Último Sermón</h2>
+      <div class="w-[44px] h-[2px] bg-sage mx-auto"></div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+      <a href="https://fb.watch/GDXisPcX9Q/" target="_blank" rel="noopener" class="relative rounded-sm overflow-hidden aspect-video bg-[#0e0621] group cursor-pointer block"
+         style="background: linear-gradient(135deg, #0e0621 0%, #2a1060 50%, #160b2c 100%);">
+        <div class="absolute inset-0 flex flex-col items-center justify-center">
+          <div class="play-btn w-16 h-16 rounded-full bg-sage/20 border-2 border-sage flex items-center justify-center mb-4">
+            <svg class="w-7 h-7 text-sage ml-1" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+          <p class="font-sans text-[11px] tracking-[0.16em] uppercase text-white/40">Clic para ver</p>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 p-4" style="background: linear-gradient(to top, rgba(7,3,15,0.8), transparent);">
+          <p class="font-sans text-[10px] font-bold tracking-[0.14em] uppercase text-sage/70 mb-1">1 Corintios 15</p>
+          <p class="font-serif text-[17px] text-white font-normal">1 Corintios 15</p>
+        </div>
+      </a>
+      <div>
+        <h3 class="font-serif text-[clamp(22px,3vw,32px)] text-[#1a1a1a] font-normal leading-[1.2] mb-3">1 Corintios 15</h3>
+        <div class="w-[44px] h-[2px] bg-sage mb-5"></div>
+        <div class="flex gap-4 mb-5 flex-wrap">
+          <span class="font-sans text-[12px] text-[#888]">18 de abr., 2026 · 5:17 PM</span>
+        </div>
+        <div class="flex gap-3 flex-wrap">
+          <a href="https://fb.watch/GDXisPcX9Q/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-sans text-[12px] font-bold tracking-[0.1em] uppercase px-5 py-2.5 rounded-sm bg-sage text-white hover:bg-sage-lt transition-colors">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+            Ver Ahora
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sermon Archive -->
+    <div class="border-t border-[#eee] pt-12">
+      <h3 class="font-serif text-[22px] text-[#1a1a1a] font-normal mb-8">Sermones Recientes</h3>
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <a href="https://www.facebook.com/lavid.california" target="_blank" rel="noopener" class="border border-[#eee] rounded-sm overflow-hidden hover:border-sage/30 hover:shadow-[0_4px_20px_rgba(0,0,0,0.07)] transition-all duration-200 group block">
+          <div class="relative h-[130px] bg-[#160b2c] flex items-center justify-center cursor-pointer" style="background: linear-gradient(135deg, #160b2c, #2a1060);">
+            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-sage/20 transition-colors"><svg class="w-5 h-5 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <span class="absolute top-2 right-2 font-sans text-[9.5px] font-bold tracking-[0.1em] uppercase bg-white/10 text-white/70 px-2 py-1 rounded-sm">38 min</span>
+          </div>
+          <div class="p-4">
+            <p class="font-sans text-[10px] uppercase tracking-[0.12em] text-sage font-bold mb-1">One House</p>
+            <h4 class="font-serif text-[16px] text-[#1a1a1a] font-normal leading-[1.3] mb-1">Cuando la Fe Se Siente Pequeña</h4>
+            <p class="font-sans text-[11.5px] text-[#999]">Ptr. Leo Gimenez · 6 de abr., 2026</p>
+          </div>
+        </a>
+
+        <a href="https://www.facebook.com/lavid.california" target="_blank" rel="noopener" class="border border-[#eee] rounded-sm overflow-hidden hover:border-sage/30 hover:shadow-[0_4px_20px_rgba(0,0,0,0.07)] transition-all duration-200 group block">
+          <div class="relative h-[130px] flex items-center justify-center cursor-pointer" style="background: linear-gradient(135deg, #0e0621, #160b2c);">
+            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-sage/20 transition-colors"><svg class="w-5 h-5 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <span class="absolute top-2 right-2 font-sans text-[9.5px] font-bold tracking-[0.1em] uppercase bg-white/10 text-white/70 px-2 py-1 rounded-sm">45 min</span>
+          </div>
+          <div class="p-4">
+            <p class="font-sans text-[10px] uppercase tracking-[0.12em] text-sage font-bold mb-1">One House</p>
+            <h4 class="font-serif text-[16px] text-[#1a1a1a] font-normal leading-[1.3] mb-1">Construido para Durar</h4>
+            <p class="font-sans text-[11.5px] text-[#999]">Ptr. Leo Gimenez · 30 de mar., 2026</p>
+          </div>
+        </a>
+
+        <a href="https://www.facebook.com/lavid.california" target="_blank" rel="noopener" class="border border-[#eee] rounded-sm overflow-hidden hover:border-sage/30 hover:shadow-[0_4px_20px_rgba(0,0,0,0.07)] transition-all duration-200 group block">
+          <div class="relative h-[130px] flex items-center justify-center cursor-pointer" style="background: linear-gradient(135deg, #2a1060, #0e0621);">
+            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-sage/20 transition-colors"><svg class="w-5 h-5 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <span class="absolute top-2 right-2 font-sans text-[9.5px] font-bold tracking-[0.1em] uppercase bg-white/10 text-white/70 px-2 py-1 rounded-sm">36 min</span>
+          </div>
+          <div class="p-4">
+            <p class="font-sans text-[10px] uppercase tracking-[0.12em] text-sage font-bold mb-1">One House</p>
+            <h4 class="font-serif text-[16px] text-[#1a1a1a] font-normal leading-[1.3] mb-1">El Ancla se Sostiene</h4>
+            <p class="font-sans text-[11.5px] text-[#999]">La Vid · 23 de mar., 2026</p>
+          </div>
+        </a>
+
+        <a href="https://www.facebook.com/lavid.california" target="_blank" rel="noopener" class="border border-[#eee] rounded-sm overflow-hidden hover:border-sage/30 hover:shadow-[0_4px_20px_rgba(0,0,0,0.07)] transition-all duration-200 group block">
+          <div class="relative h-[130px] flex items-center justify-center cursor-pointer" style="background: linear-gradient(135deg, #160b2c, #3d1880);">
+            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-sage/20 transition-colors"><svg class="w-5 h-5 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <span class="absolute top-2 right-2 font-sans text-[9.5px] font-bold tracking-[0.1em] uppercase bg-white/10 text-white/70 px-2 py-1 rounded-sm">41 min</span>
+          </div>
+          <div class="p-4">
+            <p class="font-sans text-[10px] uppercase tracking-[0.12em] text-sage font-bold mb-1">One House</p>
+            <h4 class="font-serif text-[16px] text-[#1a1a1a] font-normal leading-[1.3] mb-1">Encontrando Tu Lugar</h4>
+            <p class="font-sans text-[11.5px] text-[#999]">Ptr. Leo Gimenez · 16 de mar., 2026</p>
+          </div>
+        </a>
+
+        <a href="https://www.facebook.com/lavid.california" target="_blank" rel="noopener" class="border border-[#eee] rounded-sm overflow-hidden hover:border-sage/30 hover:shadow-[0_4px_20px_rgba(0,0,0,0.07)] transition-all duration-200 group block">
+          <div class="relative h-[130px] flex items-center justify-center cursor-pointer" style="background: linear-gradient(135deg, #0a041a, #160b2c);">
+            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-sage/20 transition-colors"><svg class="w-5 h-5 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <span class="absolute top-2 right-2 font-sans text-[9.5px] font-bold tracking-[0.1em] uppercase bg-white/10 text-white/70 px-2 py-1 rounded-sm">39 min</span>
+          </div>
+          <div class="p-4">
+            <p class="font-sans text-[10px] uppercase tracking-[0.12em] text-sage font-bold mb-1">Serie de Cuaresma</p>
+            <h4 class="font-serif text-[16px] text-[#1a1a1a] font-normal leading-[1.3] mb-1">La Cruz y la Corona</h4>
+            <p class="font-sans text-[11.5px] text-[#999]">La Vid · 9 de mar., 2026</p>
+          </div>
+        </a>
+
+        <a href="https://www.facebook.com/lavid.california" target="_blank" rel="noopener" class="border border-[#eee] rounded-sm overflow-hidden hover:border-sage/30 hover:shadow-[0_4px_20px_rgba(0,0,0,0.07)] transition-all duration-200 group block">
+          <div class="relative h-[130px] flex items-center justify-center cursor-pointer" style="background: linear-gradient(135deg, #160b2c, #0e0621);">
+            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-sage/20 transition-colors"><svg class="w-5 h-5 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <span class="absolute top-2 right-2 font-sans text-[9.5px] font-bold tracking-[0.1em] uppercase bg-white/10 text-white/70 px-2 py-1 rounded-sm">44 min</span>
+          </div>
+          <div class="p-4">
+            <p class="font-sans text-[10px] uppercase tracking-[0.12em] text-sage font-bold mb-1">Serie de Cuaresma</p>
+            <h4 class="font-serif text-[16px] text-[#1a1a1a] font-normal leading-[1.3] mb-1">El Peso de la Gracia</h4>
+            <p class="font-sans text-[11.5px] text-[#999]">Ptr. Leo Gimenez · 2 de mar., 2026</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE STREAM -->
+<section id="live" class="py-[84px]" style="background: linear-gradient(170deg, #07030f 0%, #0e0621 40%, #160b2c 100%);">
+  <div class="max-w-content mx-auto px-7">
+    <div class="grid md:grid-cols-2 gap-14 items-center">
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="live-dot w-2.5 h-2.5 rounded-full bg-red-500 inline-block"></span>
+          <p class="font-sans text-[10.5px] font-bold tracking-[0.22em] uppercase text-white/50">Transmisión en Vivo</p>
+        </div>
+        <h2 class="font-serif text-[clamp(26px,3.5vw,40px)] text-white font-normal leading-[1.2] mb-4">Únete en Vivo cada Semana</h2>
+        <div class="w-[44px] h-[2px] bg-sage mb-6"></div>
+        <p class="font-sans text-[15px] leading-[1.8] text-white/60 mb-6">¿No puedes estar presente en persona? Transmitimos en vivo nuestros servicios para que puedas adorar desde cualquier lugar del mundo. El chat interactivo y la oración están disponibles durante la transmisión.</p>
+        <div class="space-y-3 mb-8">
+          <div class="flex items-center gap-3">
+            <svg class="w-4 h-4 text-sage flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+            <span class="font-sans text-[14px] text-white/70">Mié &amp; Vie 7:00 PM · Sáb 5:00 PM (Hora del Pacífico)</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <svg class="w-4 h-4 text-sage flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span class="font-sans text-[14px] text-white/70">Chat en vivo disponible durante el servicio</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <svg class="w-4 h-4 text-sage flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span class="font-sans text-[14px] text-white/70">Equipo de oración disponible en línea durante el servicio</span>
+          </div>
+        </div>
+        <a href="#" class="inline-flex items-center gap-2 font-sans text-[12px] font-bold tracking-[0.12em] uppercase px-6 py-3 rounded-sm bg-sage text-white hover:bg-sage-lt transition-colors">
+          <span class="live-dot w-2 h-2 rounded-full bg-white inline-block"></span>
+          Ver en Vivo
+        </a>
+      </div>
+      <div class="relative rounded-sm overflow-hidden aspect-video flex items-center justify-center" style="background: linear-gradient(135deg, #160b2c, #2a1060);">
+        <div class="text-center">
+          <div class="w-16 h-16 rounded-full border-2 border-sage/40 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-sage" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23,7 16,12 23,17"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          </div>
+          <p class="font-sans text-[12px] tracking-[0.14em] uppercase text-white/40 mb-1">La transmisión comienza</p>
+          <p class="font-serif text-[22px] text-white">Sábado 5:00 PM</p>
+          <p class="font-sans text-[11px] text-white/30 mt-1">Hora del Pacífico</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-forest pt-[52px] pb-7 text-[#dddddc]">
+  <div class="max-w-content mx-auto px-7">
+    <div class="grid md:grid-cols-[1.6fr_1fr_1fr] gap-12 pb-10 border-b border-white/10 mb-7">
+      <div><h3 class="font-serif text-[18px] text-white font-normal mb-2">La Vid Church — Santa Ana, CA</h3><p class="font-sans text-[13px] leading-[1.7] text-white/42 max-w-[260px]">Creando un ambiente donde las personas pueden encontrar a Dios, servir a Dios y compartir a Dios.</p></div>
+      <div>
+        <h4 class="font-sans text-[10px] font-bold tracking-[0.2em] uppercase text-white/35 mb-4">Enlaces Rápidos</h4>
+        <ul class="space-y-2">
+          <li><a href="welcome.html" class="font-sans text-[14px] text-white hover:text-sage transition-colors">Bienvenida</a></li>
+          <li><a href="our-church.html" class="font-sans text-[14px] text-white hover:text-sage transition-colors">Nuestra Iglesia</a></li>
+          <li><a href="community.html" class="font-sans text-[14px] text-white hover:text-sage transition-colors">Comunidad</a></li>
+          <li><a href="watch.html" class="font-sans text-[14px] text-white hover:text-sage transition-colors">Ver</a></li>
+          <li><a href="connect.html#give" class="font-sans text-[14px] text-white hover:text-sage transition-colors">Dar</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-sans text-[10px] font-bold tracking-[0.2em] uppercase text-white/35 mb-4">Síguenos</h4>
+        <div class="flex gap-3">
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="w-[37px] h-[37px] rounded-full border border-sage flex items-center justify-center hover:bg-sage transition-colors group"><svg class="w-[14px] h-[14px] fill-sage group-hover:fill-white transition-colors" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="w-[37px] h-[37px] rounded-full border border-sage flex items-center justify-center hover:bg-sage transition-colors group"><svg class="w-[15px] h-[15px]" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#c8a84b" class="group-hover:stroke-white transition-colors" stroke-width="2"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="#c8a84b" class="group-hover:stroke-white transition-colors" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="#c8a84b" class="group-hover:fill-white transition-colors"/></svg></a>
+        </div>
+        <div class="mt-6"><p class="font-sans text-[12px] text-white/40 leading-[1.7]">1916 Cypress Avenue<br>Santa Ana, CA 92707</p><p class="font-sans text-[12px] text-white/40 mt-1">Mié &amp; Vie 7:00 PM · Sáb 5:00 PM</p></div>
+      </div>
+    </div>
+    <p class="text-center font-sans text-[11.5px] text-white/25">&copy; 2026 La Vid Church &mdash; Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.nav-btn[data-drop]').forEach(btn => { btn.addEventListener('click', (e) => { e.stopPropagation(); const id=btn.dataset.drop; const d=document.getElementById(id); const open=!d.classList.contains('hidden'); document.querySelectorAll('.dropdown').forEach(x=>x.classList.add('hidden')); document.querySelectorAll('.nav-btn[data-drop]').forEach(b=>b.classList.remove('active')); if(!open){d.classList.remove('hidden');btn.classList.add('active');} }); });
+  document.addEventListener('click', () => { document.querySelectorAll('.dropdown').forEach(d=>d.classList.add('hidden')); document.querySelectorAll('.nav-btn[data-drop]').forEach(b=>b.classList.remove('active')); });
+  document.getElementById('menuToggle').addEventListener('click', () => { const nav=document.getElementById('mobileNav'); nav.classList.toggle('hidden'); nav.classList.toggle('flex'); });
+  document.querySelectorAll('.mobile-nav-btn').forEach(btn => { btn.addEventListener('click', () => { document.getElementById(btn.dataset.mobileDrop).classList.toggle('hidden'); const a=btn.querySelector('.mob-arrow'); if(a) a.classList.toggle('open'); }); });
+  const p=window.location.pathname.split('/').pop()||'lvcw.html'; const m={'lvcw.html':'nav-welcome','welcome.html':'nav-welcome','our-church.html':'nav-church','community.html':'nav-community','watch.html':'nav-watch','connect.html':'nav-connect'}; const el=document.getElementById(m[p]); if(el) el.style.color='#c8a84b';
+</script>
+
+<!-- SEARCH OVERLAY -->
+<div id="searchOverlay" class="fixed inset-0 z-[200] hidden flex-col items-center pt-[120px] px-4" style="background:rgba(5,2,16,0.96);">
+  <div class="w-full max-w-[620px]">
+    <div class="relative">
+      <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="searchInput" type="text" placeholder="Buscar en La Vid Church..." class="w-full border border-white/15 text-white font-sans text-[16px] pl-12 pr-12 py-4 rounded-sm outline-none focus:border-[#c8a84b]" style="background:rgba(255,255,255,0.07);" autocomplete="off" />
+      <button id="searchClose" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div id="searchResults" class="mt-3 space-y-1"></div>
+    <p id="searchHint" class="font-sans text-[13px] text-center mt-6" style="color:rgba(255,255,255,0.3);">Escribe para buscar páginas y secciones</p>
+  </div>
+</div>
+<script>
+  (function() {
+    var idx = [
+      {t:'Inicio',d:'Página principal de La Vid Church',u:'lvcw.html',k:'inicio home bienvenida iglesia la vid church santa ana california'},
+      {t:'Bienvenida — ¿Nuevo Aquí?',d:'Información para tu primera visita',u:'welcome.html#new-here',k:'nuevo primer visita bienvenida adoracion ninos ministerio aqui'},
+      {t:'Visítanos',d:'Horarios de servicios y dirección',u:'welcome.html#visit',k:'horario servicio dominical miercoles ubicacion direccion 9am 11am visitar mapa'},
+      {t:'Nuestra Misión',d:'Encontrar, servir y compartir a Dios',u:'welcome.html',k:'mision encontrar servir compartir dios ambiente proposito'},
+      {t:'Liderazgo',d:'Pastores y líderes de La Vid',u:'our-church.html#leadership',k:'liderazgo pastor lideres staff equipo directivo'},
+      {t:'Nuestras Creencias',d:'Lo que creemos y enseñamos',u:'our-church.html#beliefs',k:'creencias fe doctrina biblia jesus dios espiritu santo salvacion'},
+      {t:'Historia',d:'Cómo comenzó La Vid Church',u:'our-church.html#history',k:'historia fundacion origen crecimiento anos pasado'},
+      {t:'Grupos de Vida',d:'Pequeños grupos para conectar',u:'community.html#groups',k:'grupos vida pequenos comunidad conectar crecer familia hogar'},
+      {t:'Eventos',d:'Próximas actividades de la iglesia',u:'community.html#events',k:'eventos calendario desayuno noche jovenes feria primavera actividades'},
+      {t:'Servir',d:'Únete como voluntario',u:'community.html#serve',k:'servir voluntario equipos ministerio talento dones ayudar'},
+      {t:'Sermones',d:'Mensajes y series de predicaciones',u:'watch.html#sermons',k:'sermones mensajes predicaciones serie una casa ensenanzas'},
+      {t:'En Vivo',d:'Transmisión en vivo de los servicios',u:'watch.html#live',k:'en vivo live streaming transmision domingo online'},
+      {t:'Contáctanos',d:'Comunícate con La Vid Church',u:'connect.html#contact',k:'contacto contactar informacion preguntas correo email telefono'},
+      {t:'Petición de Oración',d:'Envía tu petición al equipo pastoral',u:'connect.html#prayer',k:'oracion peticion orar necesidad intercesion pastoral'},
+      {t:'Dar / Ofrendar',d:'Apoya el ministerio de La Vid',u:'connect.html#give',k:'dar ofrendar donacion diezmo generosidad finanzas apoyo'},
+    ];
+    var overlay=document.getElementById('searchOverlay'),inp=document.getElementById('searchInput'),closeBtn=document.getElementById('searchClose'),res=document.getElementById('searchResults'),hint=document.getElementById('searchHint'),toggle=document.getElementById('searchToggle');
+    function openS(){overlay.classList.remove('hidden');overlay.classList.add('flex');setTimeout(function(){inp.focus();},50);document.body.style.overflow='hidden';}
+    function closeS(){overlay.classList.add('hidden');overlay.classList.remove('flex');inp.value='';res.innerHTML='';hint.style.display='';document.body.style.overflow='';}
+    toggle.addEventListener('click',openS);
+    closeBtn.addEventListener('click',closeS);
+    overlay.addEventListener('click',function(e){if(e.target===overlay)closeS();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!overlay.classList.contains('hidden'))closeS();});
+    inp.addEventListener('input',function(){
+      var terms=inp.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+      if(!terms.length){res.innerHTML='';hint.style.display='';return;}
+      hint.style.display='none';
+      var scored=idx.map(function(item){
+        var h=(item.t+' '+item.d+' '+item.k).toLowerCase();
+        return {t:item.t,d:item.d,u:item.u,score:terms.reduce(function(a,t){return a+(h.indexOf(t)>=0?1:0);},0)};
+      }).filter(function(i){return i.score>0;}).sort(function(a,b){return b.score-a.score;}).slice(0,5);
+      if(!scored.length){res.innerHTML='<p style="font-family:\'Source Sans 3\',sans-serif;font-size:14px;color:rgba(255,255,255,0.4);text-align:center;padding:16px 0;">Sin resultados.</p>';return;}
+      res.innerHTML=scored.map(function(r){
+        return '<a href="'+r.u+'" onclick="document.getElementById(\'searchOverlay\').classList.add(\'hidden\');document.getElementById(\'searchOverlay\').classList.remove(\'flex\');document.body.style.overflow=\'\';" style="display:flex;flex-direction:column;gap:2px;padding:14px 16px;margin-bottom:4px;border-radius:2px;border:1px solid rgba(255,255,255,0.1);text-decoration:none;transition:border-color 0.15s,background 0.15s;" onmouseover="this.style.borderColor=\'rgba(200,168,75,0.5)\';this.style.background=\'rgba(255,255,255,0.05)\';" onmouseout="this.style.borderColor=\'rgba(255,255,255,0.1)\';this.style.background=\'\';">'+
+          '<span style="font-family:\'Source Sans 3\',sans-serif;font-size:14px;font-weight:600;color:white;">'+r.t+'</span>'+
+          '<span style="font-family:\'Source Sans 3\',sans-serif;font-size:13px;color:rgba(255,255,255,0.5);">'+r.d+'</span></a>';
+      }).join('');
+    });
+  })();
+</script>
+</body>
+</html>
